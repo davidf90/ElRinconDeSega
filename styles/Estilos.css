@@ -1,0 +1,1672 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+                                                  /* PÁGINA PRINCIPAL */
+.titulo {
+  margin-top: 50px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 96px;
+  font-weight: 900;
+  color: transparent;
+  background: linear-gradient(90deg, #0040ff, #00ccff, #00aaff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(0, 160, 255, 0.5);
+  animation: encendido 3s linear infinite;
+  background-size: 200% auto;
+}
+
+@keyframes encendido {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.textoConsolas {
+  margin-top: 40px;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  color: #c8ff00;
+  text-shadow:
+    2px 2px 0 rgb(68, 0, 255),
+    4px 4px 10px rgb(38, 0, 255);
+  font-style: italic;
+  animation: parpadeo 2s infinite ease-in-out;
+}
+
+@keyframes parpadeo {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Con efecto de parpadeo en las consolas */
+.navbar-nav {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 10px 20px;
+  margin: 20px auto;
+  background-color: cadetblue;
+  border: 3px solid #00eaff;
+  border-radius: 10px;
+  animation: bordeNeon 1.5s infinite alternate;
+  width: fit-content;
+}
+
+@keyframes bordeNeon {
+  0% {
+    box-shadow: 0 0 5px #00eaff, 0 0 10px #00eaff, 0 0 20px #00eaff;
+  }
+
+  100% {
+    box-shadow: 0 0 20px #00ffaa, 0 0 40px #00ffaa, 0 0 60px #00ffaa;
+  }
+}
+
+.nav-icon {
+  width: 96px;
+  height: 96px;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nav-link:hover .nav-icon {
+  animation: destello 1s steps(2, start) infinite;
+}
+
+@keyframes destello {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.fondo {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.fondo-animado {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(-45deg, #d9ff00, #7928ca, #fa2a4d, #a6ffcb);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+  padding-bottom: 50px;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Contenedor de cada icono */
+.consola-icono {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.consola-icono:hover {
+  transform: scale(1.1);
+}
+
+/* Bocadillo con el nombre de la consola abajo */
+.consola-icono::after {
+  content: attr(data-nombre);
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #00ffcc;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+}
+
+/* Flecha inferior (triángulo) al icono de cada consola */
+.consola-icono::before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #00ffcc transparent transparent transparent;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Mostrar bocadillo y flecha al pasar el ratón */
+.consola-icono:hover::after,
+.consola-icono:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Colores personalizados por consola */
+.consola-icono[data-nombre="Master System"]::after,
+.consola-icono[data-nombre="Master System"]::before {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #ffffff;
+  text-shadow: 2px 2px 10px #ff0000, 0 0 12px #ffbbbb;
+  border-color: #ffffff transparent transparent transparent;
+  box-shadow: 0 0 10px #ff444466;
+}
+
+.consola-icono[data-nombre="Mega Drive"]::after,
+.consola-icono[data-nombre="Mega Drive"]::before {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: hsl(239, 99%, 49%);
+  text-shadow: 2px 2px 8px #fff, 0 0 12px #fff;
+  border-color: #ffffff transparent transparent transparent;
+  box-shadow: 0 0 10px #00bfff66;
+}
+
+.consola-icono[data-nombre="Game Gear"]::after,
+.consola-icono[data-nombre="Game Gear"]::before {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #857685;
+  text-shadow: 0 0 12px #00eaff, 0 0 25px #0088ff, 0 0 45px #00c6ff;
+  border-color: #857685 transparent transparent transparent;
+  box-shadow: 0 0 10px #ff00ff66;
+}
+
+.consola-icono[data-nombre="Mega CD"]::after,
+.consola-icono[data-nombre="Mega CD"]::before {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #00c6ff;
+  text-shadow: 0 0 12px #00eaff, 0 0 25px #0088ff, 0 0 45px #00c6ff;
+  border-color: #00c6ff transparent transparent transparent;
+  box-shadow: 0 0 10px #00fff266;
+}
+
+.consola-icono[data-nombre="Saturn"]::after,
+.consola-icono[data-nombre="Saturn"]::before {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #a3b1ff;
+  text-shadow: 0 0 12px #8ef, 0 0 25px #3b4bff, 0 0 40px #0011ff;
+  border-color: #a3b1ff transparent transparent transparent;
+  box-shadow: 0 0 10px #a0a0ff66;
+}
+
+.consola-icono[data-nombre="Dreamcast"]::after,
+.consola-icono[data-nombre="Dreamcast"]::before {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #e46c0af5;
+  text-shadow: 2px 2px 8px hwb(32 65% 20%), 0 0 12px #fff;
+  border-color: #fcfcfcee transparent transparent transparent;
+  box-shadow: 0 0 10px #ff6a0066;
+}
+
+
+.zona-ost-titulo {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffe5;
+  text-shadow: 0 0 10px #00ffe5, 0 0 20px #007fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #00ffe5, 0 0 20px #007fff;
+  }
+
+  to {
+    text-shadow: 0 0 20px #00ffe5, 0 0 40px #00ffff;
+  }
+}
+
+.list-group-item {
+  background-color: #111;
+  border: 1px solid #333;
+  cursor: cell;
+}
+
+.list-group-item:hover {
+  background-color: #222;
+  color: #00ffe5;
+}
+
+.card {
+  border-radius: 15px;
+}
+
+
+/* Estilos para la Zona OST */
+.zona-ost {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 30px;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  margin-top: 40px;
+}
+
+.zona-ost-titulo {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.5rem;
+  color: #bbff00;
+  letter-spacing: 2px;
+}
+
+.zona-ost-recuadro {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #00ffe5;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 229, 0.5);
+}
+
+/* Reproductor */
+.zona-ost audio {
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #d9ff00;
+  cursor: pointer;
+}
+
+.custom-audio {
+  width: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #222, #444);
+  accent-color: #00ffe5;
+  box-shadow: 0 0 15px rgba(0, 255, 229, 0.3);
+  height: 40px;
+  cursor: pointer !important;
+}
+
+.custom-audio::-webkit-media-controls-panel {
+  cursor: pointer !important;
+}
+
+.custom-audio::-webkit-media-controls-play-button {
+  cursor: pointer !important;
+}
+
+.custom-audio::-webkit-media-controls-timeline {
+  cursor: pointer !important;
+}
+
+.custom-audio::-webkit-media-controls-current-time-display,
+.custom-audio::-webkit-media-controls-time-remaining-display {
+  cursor: pointer !important;
+}
+
+.custom-audio::-webkit-media-controls-mute-button {
+  cursor: pointer !important;
+}
+
+.custom-audio::-webkit-media-controls-volume-slider {
+  cursor: pointer !important;
+}
+
+.custom-audio::-webkit-media-controls-volume-slider-container {
+  cursor: pointer !important;
+}
+
+.custom-audio::-webkit-media-controls-timeline-container {
+  cursor: pointer !important;
+}
+
+.custom-audio::-webkit-media-controls-enclosure {
+  cursor: pointer !important;
+}
+
+/* Contenedor del reproductor, también con cursor pointer */
+.reproductor-custom {
+  cursor: pointer !important;
+}
+
+.reproductor-custom * {
+  cursor: pointer !important;
+}
+
+/* Para Firefox */
+.custom-audio::-moz-range-thumb {
+  cursor: pointer !important;
+}
+
+.custom-audio::-moz-range-track {
+  cursor: pointer !important;
+}
+
+/* Cursor pointer en todo lo que esté dentro del audio */
+.custom-audio * {
+  cursor: pointer !important;
+}
+
+.reproductor-sega {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #000, #222);
+  border: 2px solid #00ffe5;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00ffe5;
+}
+
+.reproductor-sega button {
+  background: black;
+  color: #00ffe5;
+  border: 2px solid #00ffe5;
+  padding: 10px 18px;
+  font-family: "Orbitron", sans-serif;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.reproductor-sega button:hover {
+  background: #00ffe5;
+  color: black;
+}
+
+.texto-reproduciendo {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.75rem;
+  color: #c0bbaa;
+  text-align: center;
+  margin-top: 10px;
+  user-select: none;
+}
+
+.texto-reproduciendo span {
+  color: #020607;
+  text-shadow: 0 0 5px #fff700, 0 0 10px #fffb91;
+  animation: resaltarTexto 1.5s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes resaltarTexto {
+
+  0%,
+  100% {
+    text-shadow: 0 0 5px #fff700, 0 0 10px #fffb91;
+    transform: scale(1);
+  }
+
+  50% {
+    text-shadow: 0 0 15px #fff700, 0 0 25px #fffb91;
+    transform: scale(1.05);
+  }
+}
+
+.boton-play-sega {
+  background: linear-gradient(90deg, #00ffe5, #00b3ff);
+  color: black;
+  font-family: "Orbitron", sans-serif;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 15px #00ffe5;
+  margin-bottom: 10px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.boton-play-sega:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00ffe5;
+}
+
+.barra-progreso-sega {
+  width: 100%;
+  cursor: pointer;
+  accent-color: #00ffe5;
+}
+
+.reproductor-custom {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #0077ff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 229, 0.5);
+  cursor: pointer;
+}
+
+.controles-sega {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-play {
+  background: #00ffe5;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ffe5;
+}
+
+.barra-progreso {
+  flex: 1;
+  cursor: pointer;
+  accent-color: #2600ff;
+}
+
+.barra-volumen {
+  width: 90px;
+  cursor: pointer;
+  accent-color: #d9ff00;
+}
+
+.texto-reproduciendo {
+  margin-top: 10px;
+  font-family: Orbitron, sans-serif;
+  color: #ffffff;
+  text-shadow: 0 0 8px #00eaff;
+  font-size: 15px;
+}
+
+.cancion-item {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ffe5;
+  color: #fff;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  margin-bottom: 6px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+.cancion-item:hover {
+  background: #00ffe5;
+  color: #000;
+  transform: scale(1.02);
+  text-shadow: none;
+}
+
+.cancion-item.activa {
+  background: #61e2f3;
+  color: #000;
+  text-shadow: 0 0 5px #fff700, 0 0 15px #fff700;
+  transform: scale(1.03);
+}
+
+/* Icono de nota musical */
+.cancion-item i {
+  color: #00ffe5;
+  text-shadow: 0 0 6px #00ffe5;
+}
+
+/* Lista de canciones */
+.lista-ost {
+  list-style: none;
+  padding: 0;
+}
+
+.list-group-item {
+  background-color: rgba(0, 0, 50, 0.6);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: rgba(0, 0, 80, 0.8);
+  transform: scale(1.02);
+}
+
+.list-group-item.active {
+  background-color: #d9ff00 !important;
+  color: #000 !important;
+  font-weight: bold;
+}
+
+
+/* Barra lateral personalizada para scroll OST */
+/* Contenedor conjunto */
+.ost-wrapper {
+  display: flex;
+  height: 320px;
+  position: relative;
+}
+
+.lista-ost {
+  flex: 1;
+  overflow-y: scroll;
+  padding-right: 6px;
+}
+
+.ost-scrollbar {
+  width: 26px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.ost-track {
+  position: relative;
+  width: 8px;
+  height: 100%;
+  background: #ffe066;
+  border-radius: 6px;
+}
+
+.ost-thumb {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: #fff700;
+  border-radius: 50%;
+  cursor: grab;
+}
+
+
+
+
+                                                  /* PÁGINA MASTER SYSTEM */
+
+.efecto-barrido-horizontal {
+  position: relative;
+  overflow: hidden;
+}
+
+.efecto-aparicion-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: aparecerHorizontal 1.8s ease-out forwards;
+}
+
+.efecto-aparicion-horizontal>* {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.efecto-aparicion-horizontal>*:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.efecto-aparicion-horizontal>*:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.efecto-aparicion-horizontal>*:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.efecto-aparicion-horizontal>*:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.efecto-aparicion-horizontal>*:nth-child(5) {
+  animation-delay: 1.0s;
+}
+
+@keyframes aparecerElemento {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+    filter: blur(6px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+/* Contenedor general entra suavemente */
+@keyframes revelarHorizontal {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Efecto de aparición progresiva de izquierda a derecha */
+.efecto-aparicion-horizontal {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: aparecerHorizontal 1.8s ease-out forwards;
+}
+
+/* La animación se mantiene igual */
+@keyframes aparecerHorizontal {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+.fondo-mastersystem {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #fbfcff 0%, #080808 40%, #e90707 80%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.titulo-mastersystem {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 100px;
+  text-align: center;
+  margin-top: 32px;
+  color: #ffffff;
+  text-shadow: 2px 2px 10px #ff0000, 0 0 12px #ffbbbb;
+}
+
+.buscador-mastersystem-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.texto-juegos-encontrados-mastersystem {
+  font-family: cursive;
+  color: #15aa10;
+  font-size: 28px;
+}
+
+.texto-numero-juegos-encontrados-mastersystem {
+  font-family: cursive;
+  color: #15f546;
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 0 0 8px #ff000080, 0 0 15px #ffffff44;
+}
+
+
+
+
+
+                                                  /* PÁGINA MEGADRIVE */
+
+/* 🔹 Efecto tipo “SEGA!”: aparición centrada */
+.efecto-entrada-sega {
+  animation: fadeInSega 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInSega {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Fondo negro durante la aparición */
+.overlay-megadrive {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  animation: fadeOutOverlay 1.8s ease-out forwards;
+  z-index: 999;
+}
+
+@keyframes fadeOutOverlay {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.fondo-megadrive {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #0050d8 0%, #00c3ff 40%, #fff 80%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.titulo-megadrive {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 100px;
+  text-align: center;
+  margin-top: 32px;
+  color: #0050d8;
+  text-shadow: 2px 2px 8px #ffd700, 0 0 12px #fff;
+}
+
+.buscador-megadrive-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.texto-juegos-encontrados-megadrive {
+  font-family: cursive;
+  color: hsl(73, 84%, 51%);
+  font-size: 30px;
+}
+
+.texto-numero-juegos-encontrados-megadrive {
+  font-family: cursive;
+  color: #d0ff00;
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 0 0 8px #ff5e0088, 0 0 15px #ffb70055;
+}
+
+
+
+
+                                                      /* PÁGINA GAME GEAR */
+
+.fondo-gamegear {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(120deg, #6b7d8d 20%, #070b0f 90%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.titulo-gamegear {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 100px;
+  color: #8c8ead;
+  text-shadow: 2px 2px 10px #003366, 0 0 20px #00ccff88;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.efecto-sonic-gamegear {
+  position: fixed;
+  bottom: 10%;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.sonic-gif {
+  position: absolute;
+  height: 100px;
+  animation: sonicRunOnce 1.8s linear forwards;
+}
+
+@keyframes sonicRunOnce {
+  0% {
+    transform: translateX(-150px) scaleX(1);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  45% {
+    transform: translateX(calc(100vw - 150px)) scaleX(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(calc(100vw - 150px)) scaleX(-1); /* se da la vuelta */
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateX(-150px) scaleX(-1);
+    opacity: 0;
+    /* se va y desaparece */
+  }
+
+  100% {
+    transform: translateX(-150px) scaleX(1);
+    opacity: 0;
+  }
+}
+
+.buscador-gamegear-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.texto-juegos-encontrados-gamegear {
+  font-family: cursive;
+  color: #e100ff;
+  font-size: 30px;
+}
+
+.texto-numero-juegos-encontrados-gamegear {
+  font-family: cursive;
+  color: #ff00f2;
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 0 0 8px #00ff8855, 0 0 15px #00ccff55;
+}
+
+
+
+
+
+                                                    /*PÁGINA MEGACD*/
+
+.fondo-megacd {
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at 50% 50%, #0d1b3f, #000 85%);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.titulo-megacd {
+  font-family: "Orbitron", sans-serif;
+  font-size: 95px;
+  color: #00c6ff;
+  margin-top: 36px;
+  text-align: center;
+  text-shadow: 0 0 12px #00eaff, 0 0 25px #0088ff, 0 0 45px #00c6ff;
+  opacity: 0;
+  animation: mostrarTitulo 0.6s ease forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes mostrarTitulo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.efecto-aparicion-megacd {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor de partículas (confeti) */
+.particulas-megacd {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: desaparecerConfeti 3.5s ease forwards;
+  pointer-events: none;
+}
+
+/* Partículas tipo confeti */
+.particula-megacd {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: confetiMegaCd 3s ease-out forwards;
+}
+
+@keyframes confetiMegaCd {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* Desaparición suave del fondo del efecto */
+@keyframes desaparecerConfeti {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.buscador-megacd-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.texto-juegos-encontrados-megacd {
+  font-family: cursive;
+  color: #00c6ff;
+  font-size: 30px;
+}
+
+.texto-numero-juegos-encontrados-megacd {
+  font-family: cursive;
+  color: #4af2ff;
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 0 0 10px #00ffffaa, 0 0 20px #007bff88;
+}
+
+
+
+
+
+                                                    /* PÁGINA SATURN */
+
+.fondo-saturn {
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at 30% 20%, #a3b1ff, #0a0a24 80%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.titulo-saturn {
+  font-family: "Orbitron", sans-serif;
+  font-size: 90px;
+  text-align: center;
+  margin-top: 40px;
+  color: #a3b1ff;
+  text-shadow: 0 0 12px #8ef, 0 0 25px #3b4bff, 0 0 40px #0011ff;
+  opacity: 0;
+  animation: mostrarTitulo 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes mostrarTitulo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.efecto-intro-saturn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor de introducción */
+.intro-saturn {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOutIntro 6s ease-in-out forwards;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Estrellas con efecto túnel en espiral */
+.estrellas-saturn {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(white 1.2px, transparent 1.2px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: 0 0, 40px 40px;
+  opacity: 0.8;
+  transform-origin: center;
+  filter: blur(0.5px);
+  animation:
+    estrellasEspiral 6s ease-in-out forwards,
+    estrellasBrillo 2s ease-in-out infinite alternate;
+}
+
+/* Movimiento espiral tipo introducción juegos Saturn */
+@keyframes estrellasEspiral {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.2;
+  }
+
+  25% {
+    transform: scale(1.4) rotate(60deg);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(2) rotate(120deg);
+    opacity: 0.9;
+  }
+
+  75% {
+    transform: scale(3) rotate(180deg);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(4) rotate(240deg);
+    opacity: 0;
+  }
+}
+
+/* Brillo sutil intermitente */
+@keyframes estrellasBrillo {
+  0% {
+    filter: brightness(0.8);
+  }
+
+  100% {
+    filter: brightness(1.4);
+  }
+}
+
+/* Destello final brillante */
+.destello-saturn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 20%, #fff 10%, rgba(255, 255, 255, 0.8) 40%, transparent 75%);
+  opacity: 0;
+  animation: destelloSaturn 6s ease-in-out forwards;
+}
+
+/* Fondo negro visible casi todo el tiempo */
+@keyframes fadeOutIntro {
+  0% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Destello final tipo flash */
+@keyframes destelloSaturn {
+
+  0%,
+  65% {
+    opacity: 0;
+    filter: blur(6px) brightness(1);
+  }
+
+  70% {
+    opacity: 0.6;
+    filter: blur(3px) brightness(2.5);
+  }
+
+  80% {
+    opacity: 1;
+    filter: blur(0) brightness(5);
+  }
+
+  /* destello 1s antes */
+  100% {
+    opacity: 0;
+    filter: blur(6px) brightness(1);
+  }
+}
+
+.buscador-saturn-wrapper {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.buscador-saturn-wrapper.visible {
+  opacity: 1;
+}
+
+.texto-juegos-encontrados-saturn {
+  font-family: cursive;
+  color: #1518cc;
+  font-size: 30px;
+}
+
+.texto-numero-juegos-encontrados-saturn {
+  font-family: cursive;
+  color: hsl(221, 96%, 45%);
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 0 0 8px #ff5e0088, 0 0 15px #ffb70055;
+}
+
+
+
+
+
+                                                      /* PÁGINA DREAMCAST */
+
+.efecto-aparicion-dreamcast {
+  animation: caracolDreamcast 1.8s ease-in-out forwards;
+  transform-origin: center center;
+  will-change: transform, filter, opacity;
+}
+
+@keyframes caracolDreamcast {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-180deg);
+    filter: blur(10px) brightness(1.8);
+  }
+
+  30% {
+    opacity: 0.6;
+    transform: scale(0.9) rotate(180deg);
+    filter: blur(6px) brightness(1.4);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.05) rotate(540deg);
+    filter: blur(2px) brightness(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(720deg);
+    filter: blur(0) brightness(1);
+  }
+}
+
+.fondo-dreamcast {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #f1b715 40%, #fff 80%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.titulo-dreamcast {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 100px;
+  text-align: center;
+  margin-top: 32px;
+  color: #e46c0af5;
+  text-shadow: 2px 2px 8px hsl(32, 100%, 50%), 0 0 12px #fff;
+}
+
+.buscador-dreamcast-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.texto-juegos-encontrados-dreamcast {
+  font-family: cursive;
+  color: #1518cc;
+  font-size: 30px;
+}
+
+.texto-numero-juegos-encontrados-dreamcast {
+  font-family: cursive;
+  color: hsl(221, 96%, 45%);
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 0 0 8px #ff5e0088, 0 0 15px #ffb70055;
+}
+
+
+
+
+
+                                                  /* COMPARTIDO POR TODAS LAS PÁGINAS */
+
+/*Botón para volver a la página principal*/
+.boton-volver {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.boton-volver-gif {
+  width: 90px;
+  height: auto;
+}
+
+.boton-volver-texto {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #00aaff;
+  font-family: "Press Start 2P", cursive;
+
+  animation: parpadeo 1s infinite;
+}
+
+/* Animación de parpadeo */
+@keyframes parpadeo {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Estado inicial botón volver */
+.boton-volver-fade {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: aparecerVolver 1.5s ease-out forwards;
+}
+
+/* Animación botón volver */
+@keyframes aparecerVolver {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Sección de videos */
+.videos-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: start;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* Tarjeta de video */
+.video-card {
+  background: rgba(0, 0, 0, 0.75);
+  border: 2px solid #00ffaa;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00ffaa55;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 550px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #00ffaa88;
+}
+
+.icono-video {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.video-titulo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  color: #00ffaa;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00ffaa66;
+  display: flex;
+  align-items: center;    
+  justify-content: center; 
+  gap: 8px;
+}
+
+/* Contenedor del iframe */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Proporción 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00ffaa44;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .videos-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.buscador-titulo {
+  font-size: 2rem;
+  color: #00ffaa;
+  margin-bottom: 24px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.buscador-formulario {
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+  width: 100%;
+}
+
+.buscador-input {
+  max-height: 50px;
+  width: 600px;
+  min-width: 600px;
+  max-width: 600px;
+  padding: 10px 16px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  border: 1px solid #00ffaa;
+  background: #181818;
+  color: #fff;
+  text-align: center;
+}
+
+.buscador-boton {
+  padding: 10px 24px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  border: none;
+  background: linear-gradient(90deg, #09e939, #061ce2);
+  color: #181818;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.buscador-boton:hover {
+  background: linear-gradient(90deg, #00ccff, #00ffaa);
+}
+
+.text-primary {
+  color: #0070f3 !important;
+}
+
+.btn-primary {
+  background-color: #0070f3 !important;
+  border-color: #0070f3 !important;
+}
+
+.btn-primary:hover {
+  background-color: #005bb5 !important;
+  border-color: #005bb5 !important;
+}
+
+.posible-resultado {
+  font-style: italic;
+  font-size: 15px;
+  text-align: center;
+  color: #d9ff00;
+  margin-bottom: 5px;
+}
+
+
+/* Contenedor general de resultados */
+.buscador-resultados {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(350px, 1fr));
+  gap: 2.5rem;
+  justify-items: center;
+  align-items: start;
+  width: 95%;
+  margin: 0 auto;
+  grid-auto-rows: auto;
+}
+
+.texto-buscando {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: brown;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.texto-error {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(231, 18, 64);
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+
+/* Cada tarjeta de resultado */
+.resultado-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  border: 2px solid #00ffaa;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00ffaa55;
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: auto;
+  margin-bottom: 100px;
+}
+
+.resultado-titulo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ff5e00;
+  text-shadow: 0 0 8px #ff5e0088, 0 0 12px #ffaa0088;
+  margin-bottom: 12px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.resultado-imagen {
+  width: 260px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #00ffaa55;
+  margin-bottom: 16px;
+}
+
+/* Información debajo de la imagen */
+.resultado-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #fff;
+  text-align: left;
+  width: 90%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resultado-info p {
+  margin: 0;
+}
+
+.resultado-info b {
+  color: #00ffaa;
+}
+
+.resultado-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px #00ffaa88;
+}
+
+/* Asegura que los textos largos se muestren completos */
+.card-body p {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+/* Responsive para móviles */
+@media (max-width: 992px) {
+  .buscador-resultados {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Overlay para forzar cursor pointer en todo el reproductor */
+.reproductor-custom {
+  position: relative;
+}
+
+.reproductor-custom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lista-ost-scroll {
+  max-height: 340px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 10px;
+  border: 2px solid #00ffe5;
+  box-shadow: 0 0 16px #00ffe544, 0 0 4px #00ffe5;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 80%, #003344 100%);
+  padding: 8px 2px 8px 0;
+  margin-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #00ffe5 #001a1a;
+  width: 100%;
+}
