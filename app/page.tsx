@@ -4,12 +4,18 @@ import { NavBar } from "../components/NavBar";
 import { useState, useRef, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// Interfaz para definir la estructura de una canción
+interface Track {
+  title: string;
+  src: string;
+}
+
 export default function HomePage() {
 
   // Estado para la canción actual que se está reproduciendo
-  const [currentTrack, setCurrentTrack] = useState(null);
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   // Referencia al elemento de audio para controlar la reproducción
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Estado que indica si la canción se está reproduciendo o está pausada
   const [isPlaying, setIsPlaying] = useState(false);
@@ -21,9 +27,9 @@ export default function HomePage() {
   const [volume, setVolume] = useState(0.1);
 
   // Referencia a la lista de canciones para manipular el scroll
-  const listaRef = useRef(null);
+  const listaRef = useRef<HTMLUListElement | null>(null);
   // Referencia al "thumb" (manija) del scrollbar personalizado
-  const thumbRef = useRef(null);
+  const thumbRef = useRef<HTMLDivElement | null>(null);
   // Referencia para controlar si se está arrastrando el thumb del scrollbar
   const draggingRef = useRef(false);
   // Referencia para almacenar la posición Y inicial cuando se empieza a arrastrar
@@ -66,7 +72,7 @@ export default function HomePage() {
 
 
   /*FUNCIÓN PARA LA REPRODUCCIÓN DE LA CANCIÓN */
-  const handlePlay = (track) => {
+  const handlePlay = (track: Track) => {
     if (!audioRef.current) return;
 
     // Si es otra canción → cambiar canción (reset total)
@@ -97,44 +103,57 @@ export default function HomePage() {
     if (audioRef.current.paused) { // Si la canción está pausada, reproducirla
 
       audioRef.current.play();
-      setIsPlaying(true); // Actualizar el estado de reproducción
-    } else { // Si la canción está en reproducción, pausarla
 
+      // Actualiza el estado de reproducción
+      setIsPlaying(true);
+    } else {
+      // Si la canción está en reproducción, pausarla
       audioRef.current.pause();
-      setIsPlaying(false); // Actualizar el estado de pausa
+
+      setIsPlaying(false); // Actualiza el estado de pausa
     }
   };
 
 
-  
+
   /* FUNCIÓN PARA CUANDO EL TIEMPO DE LA CANCIÓN CAMBIA */
   const handleTimeUpdate = () => {
-    setCurrentTime(audioRef.current.currentTime); // Actualizar el estado con el tiempo actual de la canción
+    // Actualiza el estado con el tiempo actual de la canción
+    if (audioRef.current) setCurrentTime(audioRef.current.currentTime);
   };
 
 
 
   /* FUNCIÓN QUE SE LLAMA CUANDO SE CARGAN LOS METADATOS DEL AUDIO (incluye la duración total)*/
   const handleLoadedMetadata = () => {
-    setDuration(audioRef.current.duration); // Establece la duración total del audio en el estado
+    // Establece la duración total del audio en el estado
+    if (audioRef.current) setDuration(audioRef.current.duration);
   };
 
 
 
   /* FUNCIÓN PARA MANEJAR EL CAMBIO DE LA BARRA DE PROGRESO (seek bar) */
-  const handleSeek = (e) => {
-    audioRef.current.currentTime = e.target.value; // Cambiar el tiempo actual de la canción
-    setCurrentTime(e.target.value); // Actualizar el estado con el nuevo tiempo
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+    const newTime = parseFloat(e.target.value);
+
+    // Cambia el tiempo actual de la canción
+    if (audioRef.current) audioRef.current.currentTime = newTime;
+
+    // Actualiza el estado con el nuevo tiempo
+    setCurrentTime(newTime);
   };
 
 
   /* FUNCIÓN PARA MANEJAR EL CAMBIO DE VOLUMEN */
-  const handleVolume = (e) => {
+  const handleVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
 
-    const newVolume = parseFloat(e.target.value); // Obtener el nuevo valor de volumen
+    const newVolume = parseFloat(e.target.value); // Obtene el nuevo valor de volumen
 
-    if (audioRef.current) audioRef.current.volume = newVolume; // Ajustar el volumen del audio
-    setVolume(newVolume); // Actualizar el estado de volumen
+    if (audioRef.current) audioRef.current.volume = newVolume; // Ajusta el volumen del audio
+
+    // Actualiza el estado de volumen
+    setVolume(newVolume);
   };
 
 
@@ -149,17 +168,17 @@ export default function HomePage() {
 
 
   /* FUNCIÓN PARA QUE AL CAMBIAR LA CANCIÓN SE RESETEE AL INICIO, Y CON EL BOTÓN CON EL ICONO DE "play" */
-  const cambiarCancion = (track) => {
+  const cambiarCancion = (track: Track) => {
     if (!audioRef.current) return;
 
     audioRef.current.pause();
 
-    // Resetear estado React
+    // Resetea estado React
     setCurrentTime(0);
     setDuration(0);
     setIsPlaying(false);
 
-    // Resetear audio
+    // Resetea audio
     audioRef.current.currentTime = 0;
     audioRef.current.src = track.src;
     audioRef.current.load();
@@ -194,27 +213,36 @@ export default function HomePage() {
     const lista = listaRef.current;
     const thumb = thumbRef.current;
 
-    if (!lista || !thumb) return; //Si no existen, salir del efecto
+    // Si no existen, salir del efecto
+    if (!lista || !thumb) return;
 
     // Función para sincronizar la posición del "thumb" con el scroll de la lista
     const syncThumb = () => {
-      const track = thumb.parentElement; // Obtener el contenedor del "thumb"
-      const maxTop = track.clientHeight - thumb.clientHeight; // Máxima posición que puede alcanzar el "thumb"
-      
-      // Calcular la relación entre el desplazamiento de la lista y la altura total
+
+      console
+
+      // Obtener el contenedor del "thumb"
+      const track = thumb.parentElement;
+
+      if (!track) return;
+
+      // Máxima posición que puede alcanzar el "thumb"
+      const maxTop = track.clientHeight - thumb.clientHeight;
+
+      // Calcula la relación entre el desplazamiento de la lista y la altura total
       const ratio = lista.scrollTop / (lista.scrollHeight - lista.clientHeight);
 
-      // Actualizar la posición del "thumb" basada en el ratio calculado
+      // Actualiza la posición del "thumb" basada en el ratio calculado
       thumb.style.top = `${ratio * maxTop}px`;
     };
 
-    // Añadir evento para cuando se haga scroll en la lista
+    // Añade evento para cuando se haga scroll en la lista
     lista.addEventListener("scroll", syncThumb);
 
-    // Sincronizar el "thumb" al cargar el componente
+    // Sincroniza el "thumb" al cargar el componente
     syncThumb();
 
-    // Limpiar el evento cuando el componente se desmonte
+    // Limpia el evento cuando el componente se desmonte
     return () => lista.removeEventListener("scroll", syncThumb);
   }, []);
 
@@ -223,48 +251,70 @@ export default function HomePage() {
   /* PARA MANEJAR EL DRAG(arrastre) DEL "thumb" DEL SCROLLBAR */
   useEffect(() => {
 
-    // Obtener las referencias de la lista y del "thumb"
+    // Obtene las referencias de la lista y del "thumb"
     const thumb = thumbRef.current;
     const lista = listaRef.current;
 
-    if (!thumb || !lista) return; // Si no existen, salir del efecto
+    // Si no existen, salir del efecto
+    if (!thumb || !lista) return;
 
     // Función para manejar cuando se empieza a arrastrar el "thumb"
-    const onMouseDown = (e) => {
-      draggingRef.current = true; // Activar el estado de arrastre
-      startYRef.current = e.clientY; // Guardar la posición Y inicial del ratón
-      startScrollRef.current = lista.scrollTop; // Guardar la posición inicial del scroll
-      document.body.style.userSelect = "none"; // Evitar que se seleccione texto al arrastrar
+    const onMouseDown = (e: MouseEvent) => {
+
+      // Activa el estado de arrastre
+      draggingRef.current = true;
+
+      // Guarda la posición Y inicial del ratón
+      startYRef.current = e.clientY;
+
+      // Guarda la posición inicial del scroll
+      startScrollRef.current = lista.scrollTop;
+
+      // Evita que se seleccione texto al arrastrar
+      document.body.style.userSelect = "none";
     };
 
     // Función para mover el "thumb" cuando se está arrastrando
-    const onMouseMove = (e) => {
-      if (!draggingRef.current) return; // Si no se está arrastrando, salir de la función
+    const onMouseMove = (e: MouseEvent) => {
+      // Si no se está arrastrando, salir de la función
+      if (!draggingRef.current) return;
 
       const track = thumb.parentElement;
-      const maxThumbMove = track.clientHeight - thumb.clientHeight; // Máximo desplazamiento del "thumb"
-      
-      const deltaY = e.clientY - startYRef.current; // Diferencia de movimiento en Y
-      const ratio = deltaY / maxThumbMove; // Calcular el ratio de desplazamiento
 
-      const scrollable = lista.scrollHeight - lista.clientHeight; // Total desplazable de la lista
+      if (!track) return;
 
-      // Actualizar el scroll de la lista basado en el ratio
+      // Máximo desplazamiento del "thumb"
+      const maxThumbMove = track.clientHeight - thumb.clientHeight;
+
+      // Diferencia de movimiento en Y
+      const deltaY = e.clientY - startYRef.current;
+
+      // Calcular el ratio de desplazamiento
+      const ratio = deltaY / maxThumbMove;
+
+      // Total desplazable de la lista
+      const scrollable = lista.scrollHeight - lista.clientHeight;
+
+      // Actualiza el scroll de la lista basado en el ratio
       lista.scrollTop = startScrollRef.current + ratio * scrollable;
     };
 
     // Función para finalizar el arrastre del "thumb"
     const onMouseUp = () => {
-      draggingRef.current = false; // Desactivar el estado de arrastre
-      document.body.style.userSelect = ""; // Restaurar la selección de texto
+
+      // Desactiva el estado de arrastre
+      draggingRef.current = false;
+
+      // Restaura la selección de texto
+      document.body.style.userSelect = "";
     };
 
-    // Añadir eventos de ratón para arrastrar
+    // Añade eventos de ratón para arrastrar
     thumb.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseup", onMouseUp);
 
-    // Limpiar eventos cuando el componente se desmonte
+    // Limpia eventos cuando el componente se desmonte
     return () => {
       thumb.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mousemove", onMouseMove);
@@ -282,7 +332,7 @@ export default function HomePage() {
   }, []);
 
 
-  
+
   return (
     <div className="fondo-animado">
       <div className="titulo">
@@ -350,31 +400,30 @@ export default function HomePage() {
             </div>
 
             {/* Lista de canciones */}
-              <div className="ost-wrapper">
-                {/* Barra lateral */}
-                <div className="ost-scrollbar">
-                  <div className="ost-track">
-                    <div className="ost-thumb" ref={thumbRef} />
-                  </div>
+            <div className="ost-wrapper">
+              {/* Barra lateral */}
+              <div className="ost-scrollbar">
+                <div className="ost-track">
+                  <div className="ost-thumb" ref={thumbRef} />
                 </div>
-
-                {/* Lista */}
-                <ul className="list-group lista-ost" ref={listaRef}>
-                  {tracks.map((track, index) => (
-                    <li
-                      key={index}
-                      className={`list-group-item cancion-item ${
-                        currentTrack?.src === track.src ? "activa" : ""
-                      }`}
-                      onClick={() => handlePlay(track)}
-                    >
-                      <i className="bi bi-music-note-beamed me-2"></i>
-                      {track.title}
-                    </li>
-                  ))}
-                </ul>
               </div>
-              
+
+              {/* Lista */}
+              <ul className="list-group lista-ost" ref={listaRef}>
+                {tracks.map((track, index) => (
+                  <li
+                    key={index}
+                    className={`list-group-item cancion-item ${currentTrack?.src === track.src ? "activa" : ""
+                      }`}
+                    onClick={() => handlePlay(track)}
+                  >
+                    <i className="bi bi-music-note-beamed me-2"></i>
+                    {track.title}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
         </div>
       </div>
