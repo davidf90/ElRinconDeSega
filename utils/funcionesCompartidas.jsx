@@ -66,8 +66,8 @@ export const NavBarConsolas = ({
         <Image
           src={icono}
           alt={nombre}
-          width={80}
-          height={80}
+          width={60}
+          height={60}
           className="nav-icon"
           priority={true}
         />
