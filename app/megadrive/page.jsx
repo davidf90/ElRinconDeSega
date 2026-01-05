@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { BuscadorMegaDrive } from "@/components/buscadorMegadrive";
 
 export default function PageMegaDrive() {
@@ -10,7 +11,9 @@ export default function PageMegaDrive() {
       </section>
 
       <section className="buscador-contenedor">
-        <BuscadorMegaDrive />
+        <Suspense fallback={<div style={{ visibility: "hidden", minHeight: "100vh" }} />}>
+          <BuscadorMegaDrive />
+        </Suspense>
       </section>
     </main>
   );

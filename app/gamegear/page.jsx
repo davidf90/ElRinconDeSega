@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { BuscadorGameGear } from "@/components/buscadorGameGear";
 
 export default function PageGameGear() {
@@ -10,7 +11,9 @@ export default function PageGameGear() {
       </section>
 
       <section className="buscador-contenedor">
-        <BuscadorGameGear />
+        <Suspense fallback={<div style={{ visibility: "hidden", minHeight: "100vh" }} />}>
+          <BuscadorGameGear />
+        </Suspense>
       </section>
     </main>
   );

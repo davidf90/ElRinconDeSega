@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { BuscadorMegaCd } from "@/components/buscadorMegaCd";
 
 export default function PageMegaCd() {
@@ -10,7 +11,9 @@ export default function PageMegaCd() {
       </section>
 
       <section className="buscador-contenedor">
-        <BuscadorMegaCd />
+        <Suspense fallback={<div style={{ visibility: "hidden", minHeight: "100vh" }} />}>
+          <BuscadorMegaCd />
+        </Suspense>
       </section>
     </main>
   );

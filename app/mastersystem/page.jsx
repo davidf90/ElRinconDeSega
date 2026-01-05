@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { BuscadorMasterSystem } from "@/components/buscadorMasterSystem";
 
 export default function PageMasterSystem() {
@@ -10,7 +11,9 @@ export default function PageMasterSystem() {
       </section>
 
       <section className="buscador-contenedor">
-        <BuscadorMasterSystem />
+        <Suspense fallback={<div style={{ visibility: "hidden", minHeight: "100vh" }} />}>
+          <BuscadorMasterSystem />
+        </Suspense>
       </section>
     </main>
   );

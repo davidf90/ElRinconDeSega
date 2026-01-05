@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { BuscadorSaturn } from "@/components/buscadorSaturn";
 
 export default function PageSaturn() {
@@ -10,7 +11,9 @@ export default function PageSaturn() {
       </section>
 
       <section className="buscador-contenedor">
-        <BuscadorSaturn />
+        <Suspense fallback={<div style={{ visibility: "hidden", minHeight: "100vh" }} />}>
+          <BuscadorSaturn />
+        </Suspense>
       </section>
     </main>
   );

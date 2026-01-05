@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useAudio } from "@/context/AudioContext";
-import { useRouter } from "next/navigation";
 import { entradaPagina,
   traducirGenero,
   normalizarTexto,

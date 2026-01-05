@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { BuscadorDreamcast } from "@/components/buscadorDreamcast";
 
 export default function PageDreamcast() {
@@ -10,7 +11,9 @@ export default function PageDreamcast() {
       </section>
 
       <section className="buscador-contenedor">
-        <BuscadorDreamcast />
+        <Suspense fallback={<div style={{ visibility: "hidden", minHeight: "100vh" }} />}>
+          <BuscadorDreamcast />
+        </Suspense>
       </section>
     </main>
   );
