@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 /* PARA EL FUNCIONAMIENTO DEL NAVBAR DE CADA CONSOLA */
 export const NavBarConsolas = ({
@@ -29,7 +30,7 @@ export const NavBarConsolas = ({
       onMouseDown={(e) => {
         // Para que no se pueda acceder a la página mediante clic de la ruedecilla del ratón
         // He hecho ésto porque da problemas a la hora de que se siga escuchando el sonido si cierras la pestaña
-        if (e.button === 1 || e.button===2) {
+        if (e.button === 1 || e.button === 2) {
           e.preventDefault();
           e.stopPropagation();
           return;
@@ -61,11 +62,14 @@ export const NavBarConsolas = ({
           e.stopPropagation();
         }}
       >
-        {/* Imagen correspondiente para cada consola */}
-        <img 
+        {/* Imagen correspondiente para cada consola - Optimizada con next/image */}
+        <Image
           src={icono}
           alt={nombre}
+          width={80}
+          height={80}
           className="nav-icon"
+          priority={true}
         />
       </Link>
     </li>
@@ -194,7 +198,7 @@ export const fetchJuegosBase = async ({
       playSound?.("sinresultados");
       return;
     }
-    
+
     // Normaliza el texto, con minúsculas y sin acentos ni caracteres especiales
     const busquedaNorm = normalizarTexto(busqueda);
 
@@ -331,8 +335,8 @@ export const BuscadorResultados = ({
                 <b>Género:</b>{" "}
                 {juego.genres?.length
                   ? juego.genres
-                      .map((g) => traducirGenero(g.name))
-                      .join(", ")
+                    .map((g) => traducirGenero(g.name))
+                    .join(", ")
                   : "-"}
               </p>
 
@@ -433,7 +437,7 @@ export const BotonVolver = ({
 
 
 /* BOTÓN VOLVER (Hook que decide cuándo aparece el botón) */
-export const useBotonVolver = ({ mostrarContenido, mostrarEfecto, setMostrarVolver, delay}) => {
+export const useBotonVolver = ({ mostrarContenido, mostrarEfecto, setMostrarVolver, delay }) => {
 
   useEffect(() => {
     // Para que no aparezca antes de que termine el efecto de entrada
@@ -454,7 +458,7 @@ export const useBotonVolver = ({ mostrarContenido, mostrarEfecto, setMostrarVolv
 export const handleInputChangeBase = (setter, playSound) => (e) => {
 
   setter(e.target.value);
-  
+
   playSound?.("tecleo");
 };
 
