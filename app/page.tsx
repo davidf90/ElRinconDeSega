@@ -71,51 +71,6 @@ export default function HomePage() {
   ];
 
 
-  /*FUNCIÓN PARA LA REPRODUCCIÓN DE LA CANCIÓN */
-  const handlePlay = (track: Track) => {
-    if (!audioRef.current) return;
-
-    // Si es otra canción → cambiar canción (reset total)
-    if (currentTrack?.src !== track.src) {
-      cambiarCancion(track);
-      return;
-    }
-
-    // Si es la misma → play/pause
-    if (audioRef.current.paused) {
-      audioRef.current.play();
-      setIsPlaying(true);
-    } else {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
-
-
-
-
-  /* FUNCIÓN PARA ALTERNAR ENTRE PLAY/PAUSE */
-  const togglePlay = () => {
-
-    // Si no hay audio, salir
-    if (!audioRef.current) return;
-
-    if (audioRef.current.paused) { // Si la canción está pausada, reproducirla
-
-      audioRef.current.play();
-
-      // Actualiza el estado de reproducción
-      setIsPlaying(true);
-    } else {
-      // Si la canción está en reproducción, pausarla
-      audioRef.current.pause();
-
-      setIsPlaying(false); // Actualiza el estado de pausa
-    }
-  };
-
-
-
   /* FUNCIÓN PARA CUANDO EL TIEMPO DE LA CANCIÓN CAMBIA */
   const handleTimeUpdate = () => {
     // Actualiza el estado con el tiempo actual de la canción
@@ -167,23 +122,71 @@ export default function HomePage() {
 
 
 
-  /* FUNCIÓN PARA QUE AL CAMBIAR LA CANCIÓN SE RESETEE AL INICIO, Y CON EL BOTÓN CON EL ICONO DE "play" */
-  const cambiarCancion = (track: Track) => {
+  /* FUNCIÓN PARA LA REPRODUCCIÓN DE LA CANCIÓN */
+  const handlePlay = (track: Track) => {
+    // Si no existe el audio, salir
     if (!audioRef.current) return;
 
-    audioRef.current.pause();
+    // Si la canción es distinta a la actual, entonces cambia canción
+    if (currentTrack?.src !== track.src) {
+      cambiarCancion(track);
+      return;
+    }
 
-    // Resetea estado React
+    // Si es la misma canción, entonces alterna entre play y pause
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    } else {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+  
+
+
+  /* FUNCIÓN PARA QUE AL CAMBIAR LA CANCIÓN SE RESETEE AL INICIO, Y CON EL BOTÓN CON EL ICONO DE "play" */
+  const cambiarCancion = (track: Track) => {
+    // Si no existe el elemento <audio>, salir
+    if (!audioRef.current) return;
+
+    const audio = audioRef.current;
+
+    // Detiene cualquier reproducción actual
+    audio.pause();
+
+    // Resetea estados de React relacionados con la reproducción
     setCurrentTime(0);
     setDuration(0);
     setIsPlaying(false);
 
-    // Resetea audio
-    audioRef.current.currentTime = 0;
-    audioRef.current.src = track.src;
-    audioRef.current.load();
+    // Asigna la nueva canción al elemento audio
+    audio.src = track.src;
 
+    // Fuerza al navegador a recargar el recurso de audio
+    audio.load();
+
+    // Actualiza el estado con la canción seleccionada
     setCurrentTrack(track);
+
+    // Se ejecuta cuando el navegador indica que el audio ya está listo para reproducirse //
+    const playWhenReady = () => {
+      audio
+        .play()
+        .then(() => {
+          // Marca el estado como reproduciendo
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          // Ignora errores de autoplay o abortos del navegador
+        });
+
+      // Elimina el listener para evitar ejecuciones múltiples
+      audio.removeEventListener("canplay", playWhenReady);
+    };
+
+    // Espera al evento "canplay" antes de iniciar la reproducción
+    audio.addEventListener("canplay", playWhenReady);
   };
 
 
@@ -364,11 +367,6 @@ export default function HomePage() {
 
               {/* Controles */}
               <div className="controles-sega">
-                {/* Play/Pause */}
-                <button onClick={togglePlay}>
-                  {isPlaying ? "⏸️" : "▶️"}
-                </button>
-
                 {/* Barra de progreso */}
                 <input
                   type="range"
