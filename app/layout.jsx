@@ -9,6 +9,13 @@ export const metadata = {
   description: "Rememora los videojuegos clásicos de SEGA",
 };
 
+/* Configuración del viewport para asegurar el escalado adecuado, y se vea de forma correcta en 
+  navegadores de pc y dispositivos móviles */
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es">

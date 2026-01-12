@@ -1670,3 +1670,369 @@
   scrollbar-color: #00ffe5 #001a1a;
   width: 100%;
 }
+
+
+/* ============================================= */
+/*          RESPONSIVE - TABLETS (768px)         */
+/* ============================================= */
+@media (max-width: 768px) {
+  /* Página principal */
+  .titulo {
+    font-size: 48px;
+    margin-top: 30px;
+  }
+
+  .textoConsolas {
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 0 15px;
+  }
+
+  .navbar-nav {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .nav-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .consola-icono {
+    margin: 10px;
+  }
+
+  .consola-icono::after {
+    font-size: 12px;
+    bottom: -40px;
+  }
+
+  /* Títulos de cada consola */
+  .titulo-mastersystem,
+  .titulo-megadrive,
+  .titulo-gamegear,
+  .titulo-megacd,
+  .titulo-saturn,
+  .titulo-dreamcast {
+    font-size: 48px;
+    margin-top: 20px;
+    padding: 0 15px;
+  }
+
+  /* Buscador */
+  .buscador-input {
+    width: 90%;
+    min-width: unset;
+    max-width: 90%;
+    font-size: 1rem;
+  }
+
+  .buscador-formulario {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 15px;
+  }
+
+  .buscador-boton {
+    width: 90%;
+  }
+
+  .buscador-titulo {
+    font-size: 1.5rem;
+    padding: 0 15px;
+  }
+
+  /* Resultados de búsqueda */
+  .buscador-resultados {
+    grid-template-columns: 1fr;
+    width: 90%;
+    gap: 1.5rem;
+  }
+
+  .resultado-card {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .resultado-titulo {
+    font-size: 1.3rem;
+  }
+
+  .resultado-imagen {
+    width: 100%;
+    height: auto;
+    max-width: 280px;
+  }
+
+  /* Videos */
+  .videos-section {
+    grid-template-columns: 1fr;
+    width: 95%;
+  }
+
+  .video-card {
+    max-width: 100%;
+  }
+
+  .video-titulo {
+    font-size: 1.3rem;
+  }
+
+  /* Zona OST */
+  .zona-ost {
+    padding: 15px;
+    margin: 20px 15px;
+    width: calc(100% - 30px);
+  }
+
+  .zona-ost-titulo {
+    font-size: 1.2rem;
+  }
+
+  .ost-wrapper {
+    height: auto;
+    max-height: 280px;
+  }
+
+  .lista-ost-scroll {
+    max-height: 250px;
+  }
+
+  .texto-reproduciendo {
+    font-size: 12px;
+  }
+
+  .cancion-item {
+    font-size: 0.6rem;
+    padding: 8px;
+  }
+
+  /* Botón volver */
+  .boton-volver {
+    top: 10px;
+    left: 10px;
+  }
+
+  .boton-volver-gif {
+    width: 60px;
+  }
+
+  .boton-volver-texto {
+    font-size: 12px;
+  }
+
+  /* Textos de juegos encontrados */
+  .texto-juegos-encontrados-mastersystem,
+  .texto-juegos-encontrados-megadrive,
+  .texto-juegos-encontrados-gamegear,
+  .texto-juegos-encontrados-megacd,
+  .texto-juegos-encontrados-saturn,
+  .texto-juegos-encontrados-dreamcast {
+    font-size: 22px;
+  }
+
+  .texto-numero-juegos-encontrados-mastersystem,
+  .texto-numero-juegos-encontrados-megadrive,
+  .texto-numero-juegos-encontrados-gamegear,
+  .texto-numero-juegos-encontrados-megacd,
+  .texto-numero-juegos-encontrados-saturn,
+  .texto-numero-juegos-encontrados-dreamcast {
+    font-size: 24px;
+  }
+
+  .texto-buscando,
+  .texto-error {
+    font-size: 20px;
+    padding: 0 15px;
+  }
+}
+
+
+/* ============================================= */
+/*          RESPONSIVE - MÓVILES (480px)         */
+/* ============================================= */
+@media (max-width: 480px) {
+  /* Página principal */
+  .titulo {
+    font-size: 32px;
+    margin-top: 20px;
+  }
+
+  .textoConsolas {
+    font-size: 14px;
+    margin-top: 15px;
+  }
+
+  .navbar-nav {
+    padding: 8px 10px;
+    gap: 5px;
+    border-radius: 8px;
+  }
+
+  .nav-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .consola-icono {
+    margin: 8px;
+  }
+
+  .consola-icono::after {
+    font-size: 10px;
+    bottom: -35px;
+    padding: 4px 8px;
+  }
+
+  /* Títulos de cada consola */
+  .titulo-mastersystem,
+  .titulo-megadrive,
+  .titulo-gamegear,
+  .titulo-megacd,
+  .titulo-saturn,
+  .titulo-dreamcast {
+    font-size: 28px;
+    margin-top: 15px;
+    word-break: break-word;
+  }
+
+  /* Buscador */
+  .buscador-input {
+    width: 95%;
+    max-width: 95%;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .buscador-boton {
+    width: 95%;
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .buscador-titulo {
+    font-size: 1.2rem;
+  }
+
+  /* Resultados */
+  .resultado-card {
+    padding: 15px;
+  }
+
+  .resultado-titulo {
+    font-size: 1.1rem;
+  }
+
+  .resultado-imagen {
+    max-width: 100%;
+  }
+
+  .resultado-info {
+    font-size: 0.85rem;
+  }
+
+  /* Videos */
+  .video-titulo {
+    font-size: 1.1rem;
+  }
+
+  .icono-video {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Zona OST */
+  .zona-ost {
+    padding: 12px;
+    margin: 15px 10px;
+    width: calc(100% - 20px);
+  }
+
+  .zona-ost-titulo {
+    font-size: 1rem;
+  }
+
+  .zona-ost-recuadro {
+    padding: 12px;
+  }
+
+  .ost-wrapper {
+    max-height: 220px;
+  }
+
+  .lista-ost-scroll {
+    max-height: 200px;
+  }
+
+  .cancion-item {
+    font-size: 0.55rem;
+    padding: 6px;
+  }
+
+  .texto-reproduciendo {
+    font-size: 10px;
+  }
+
+  .controles-sega {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .btn-play {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .barra-volumen {
+    width: 70px;
+  }
+
+  /* Botón volver */
+  .boton-volver {
+    top: 8px;
+    left: 8px;
+  }
+
+  .boton-volver-gif {
+    width: 45px;
+  }
+
+  .boton-volver-texto {
+    font-size: 10px;
+  }
+
+  /* Textos de juegos encontrados */
+  .texto-juegos-encontrados-mastersystem,
+  .texto-juegos-encontrados-megadrive,
+  .texto-juegos-encontrados-gamegear,
+  .texto-juegos-encontrados-megacd,
+  .texto-juegos-encontrados-saturn,
+  .texto-juegos-encontrados-dreamcast {
+    font-size: 18px;
+  }
+
+  .texto-numero-juegos-encontrados-mastersystem,
+  .texto-numero-juegos-encontrados-megadrive,
+  .texto-numero-juegos-encontrados-gamegear,
+  .texto-numero-juegos-encontrados-megacd,
+  .texto-numero-juegos-encontrados-saturn,
+  .texto-numero-juegos-encontrados-dreamcast {
+    font-size: 20px;
+  }
+
+  .texto-buscando,
+  .texto-error {
+    font-size: 16px;
+  }
+
+  .posible-resultado {
+    font-size: 12px;
+  }
+
+  /* Efecto Sonic en Game Gear */
+  .sonic-gif {
+    height: 60px;
+  }
+}
