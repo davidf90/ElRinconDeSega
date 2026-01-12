@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 
-                                                  /* PÁGINA PRINCIPAL */
+/* PÁGINA PRINCIPAL */
 .titulo {
   margin-top: 50px;
   font-family: 'Orbitron', sans-serif;
@@ -613,7 +613,7 @@
 
 
 
-                                                  /* PÁGINA MASTER SYSTEM */
+/* PÁGINA MASTER SYSTEM */
 
 .efecto-barrido-horizontal {
   position: relative;
@@ -750,7 +750,7 @@
 
 
 
-                                                  /* PÁGINA MEGADRIVE */
+/* PÁGINA MEGADRIVE */
 
 /* 🔹 Efecto tipo “SEGA!”: aparición centrada */
 .efecto-entrada-sega {
@@ -835,7 +835,7 @@
 
 
 
-                                                      /* PÁGINA GAME GEAR */
+/* PÁGINA GAME GEAR */
 
 .fondo-gamegear {
   min-height: 100vh;
@@ -889,7 +889,8 @@
   }
 
   50% {
-    transform: translateX(calc(100vw - 150px)) scaleX(-1); /* se da la vuelta */
+    transform: translateX(calc(100vw - 150px)) scaleX(-1);
+    /* se da la vuelta */
     opacity: 1;
   }
 
@@ -932,7 +933,7 @@
 
 
 
-                                                    /*PÁGINA MEGACD*/
+/*PÁGINA MEGACD*/
 
 .fondo-megacd {
   min-height: 100vh;
@@ -1063,7 +1064,7 @@
 
 
 
-                                                    /* PÁGINA SATURN */
+/* PÁGINA SATURN */
 
 .fondo-saturn {
   min-height: 100vh;
@@ -1258,7 +1259,7 @@
 
 
 
-                                                      /* PÁGINA DREAMCAST */
+/* PÁGINA DREAMCAST */
 
 .efecto-aparicion-dreamcast {
   animation: caracolDreamcast 1.8s ease-in-out forwards;
@@ -1339,7 +1340,7 @@
 
 
 
-                                                  /* COMPARTIDO POR TODAS LAS PÁGINAS */
+/* COMPARTIDO POR TODAS LAS PÁGINAS */
 
 /*Botón para volver a la página principal*/
 .boton-volver {
@@ -1373,9 +1374,17 @@
 
 /* Animación de parpadeo */
 @keyframes parpadeo {
-  0%   { opacity: 1; }
-  50%  { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Estado inicial botón volver */
@@ -1438,8 +1447,8 @@
   margin-bottom: 10px;
   text-shadow: 0 0 10px #00ffaa66;
   display: flex;
-  align-items: center;    
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   gap: 8px;
 }
 
@@ -1447,7 +1456,8 @@
 .video-container {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* Proporción 16:9 */
+  padding-bottom: 56.25%;
+  /* Proporción 16:9 */
   height: 0;
   overflow: hidden;
   border-radius: 8px;
@@ -1663,7 +1673,7 @@
   border-radius: 10px;
   border: 2px solid #00ffe5;
   box-shadow: 0 0 16px #00ffe544, 0 0 4px #00ffe5;
-  background: linear-gradient(180deg, rgba(0,0,0,0.7) 80%, #003344 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 80%, #003344 100%);
   padding: 8px 2px 8px 0;
   margin-bottom: 10px;
   scrollbar-width: thin;
@@ -1676,6 +1686,7 @@
 /*          RESPONSIVE - TABLETS (768px)         */
 /* ============================================= */
 @media (max-width: 768px) {
+
   /* Página principal */
   .titulo {
     font-size: 48px;
@@ -1689,9 +1700,12 @@
   }
 
   .navbar-nav {
-    flex-wrap: wrap;
-    padding: 10px 15px;
-    gap: 10px;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    padding: 8px 12px;
+    gap: 5px;
+    overflow-x: auto;
+    max-width: 95vw;
   }
 
   .nav-icon {
@@ -1700,7 +1714,7 @@
   }
 
   .consola-icono {
-    margin: 10px;
+    margin: 5px;
   }
 
   .consola-icono::after {
@@ -1853,6 +1867,7 @@
 /*          RESPONSIVE - MÓVILES (480px)         */
 /* ============================================= */
 @media (max-width: 480px) {
+
   /* Página principal */
   .titulo {
     font-size: 32px;
@@ -1865,9 +1880,13 @@
   }
 
   .navbar-nav {
-    padding: 8px 10px;
-    gap: 5px;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    padding: 6px 8px;
+    gap: 3px;
     border-radius: 8px;
+    overflow-x: auto;
+    max-width: 98vw;
   }
 
   .nav-icon {
@@ -1876,7 +1895,7 @@
   }
 
   .consola-icono {
-    margin: 8px;
+    margin: 3px;
   }
 
   .consola-icono::after {
