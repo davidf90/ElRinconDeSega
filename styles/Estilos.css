@@ -53,9 +53,11 @@
 
 /* Con efecto de parpadeo en las consolas */
 .navbar-nav {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: center !important;
   list-style: none;
   padding: 10px 20px;
   margin: 20px auto;
@@ -1700,21 +1702,22 @@
   }
 
   .navbar-nav {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    padding: 8px 12px;
-    gap: 5px;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    padding: 8px 12px !important;
+    gap: 5px !important;
     overflow-x: auto;
     max-width: 95vw;
   }
 
   .nav-icon {
-    width: 64px;
-    height: 64px;
+    width: 64px !important;
+    height: 64px !important;
   }
 
   .consola-icono {
-    margin: 5px;
+    margin: 5px !important;
   }
 
   .consola-icono::after {
@@ -1880,22 +1883,23 @@
   }
 
   .navbar-nav {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    padding: 6px 8px;
-    gap: 3px;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    padding: 6px 8px !important;
+    gap: 3px !important;
     border-radius: 8px;
     overflow-x: auto;
     max-width: 98vw;
   }
 
   .nav-icon {
-    width: 48px;
-    height: 48px;
+    width: 48px !important;
+    height: 48px !important;
   }
 
   .consola-icono {
-    margin: 3px;
+    margin: 3px !important;
   }
 
   .consola-icono::after {

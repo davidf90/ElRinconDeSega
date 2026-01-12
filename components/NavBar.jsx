@@ -147,7 +147,7 @@ export const NavBar = () => {
   };
 
 
-  
+
 
   return (
 
@@ -155,89 +155,86 @@ export const NavBar = () => {
       {/* Elemento audio oculto para reproducir efectos de sonido hover */}
       <audio ref={audioRef} style={{ display: "none" }} />
 
-      {/* Barra de navegación con clases Bootstrap */}
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        {/* Contenedor fluido que ocupa todo el ancho */}
-        <div className="container-fluid">
-          {/* Lista de navegación centrada */}
-          <ul className="navbar-nav d-flex justify-content-center w-100">
+      {/* Barra de navegación con clases personalizadas para mantener horizontal en móvil */}
+      <nav>
+        {/* Lista de navegación centrada */}
+        <ul className="navbar-nav">
 
-             {/* Función refactorizada con los elementos de cada consola (icono, canción al hacer clic, etc.) */}
-            <NavBarConsolas
-              nombre="Master System"
-              ruta="/mastersystem"
-              icono="/icons/iconoMasterSystem.png"
-              sonidoHover="Master System Hover"
-              sonidoClick="mastersystem"
-              handleSoundPlay={handleSoundPlay}
-              sounds={sounds}
-              reproducirSonido={reproducirSonido}
-              router={router}
-            />
+          {/* Función refactorizada con los elementos de cada consola (icono, canción al hacer clic, etc.) */}
+          <NavBarConsolas
+            nombre="Master System"
+            ruta="/mastersystem"
+            icono="/icons/iconoMasterSystem.png"
+            sonidoHover="Master System Hover"
+            sonidoClick="mastersystem"
+            handleSoundPlay={handleSoundPlay}
+            sounds={sounds}
+            reproducirSonido={reproducirSonido}
+            router={router}
+          />
 
-            <NavBarConsolas
-              nombre="Mega Drive"
-              ruta="/megadrive"
-              icono="/icons/iconoMegaDrive.png"
-              sonidoHover="Mega Drive Hover"
-              sonidoClick="megadrive"
-              handleSoundPlay={handleSoundPlay}
-              sounds={sounds}
-              reproducirSonido={reproducirSonido}
-              router={router}
-            />
+          <NavBarConsolas
+            nombre="Mega Drive"
+            ruta="/megadrive"
+            icono="/icons/iconoMegaDrive.png"
+            sonidoHover="Mega Drive Hover"
+            sonidoClick="megadrive"
+            handleSoundPlay={handleSoundPlay}
+            sounds={sounds}
+            reproducirSonido={reproducirSonido}
+            router={router}
+          />
 
-            <NavBarConsolas
-              nombre="Game Gear"
-              ruta="/gamegear"
-              icono="/icons/iconoGameGear.png"
-              sonidoHover="Game Gear Hover"
-              sonidoClick="gamegear"
-              handleSoundPlay={handleSoundPlay}
-              sounds={sounds}
-              reproducirSonido={reproducirSonido}
-              router={router}
-            />
+          <NavBarConsolas
+            nombre="Game Gear"
+            ruta="/gamegear"
+            icono="/icons/iconoGameGear.png"
+            sonidoHover="Game Gear Hover"
+            sonidoClick="gamegear"
+            handleSoundPlay={handleSoundPlay}
+            sounds={sounds}
+            reproducirSonido={reproducirSonido}
+            router={router}
+          />
 
-            <NavBarConsolas
-              nombre="Mega CD"
-              ruta="/megacd"
-              icono="/icons/iconoMegaCd.png"
-              sonidoHover="Mega CD Hover"
-              sonidoClick="megacd"
-              handleSoundPlay={handleSoundPlay}
-              sounds={sounds}
-              reproducirSonido={reproducirSonido}
-              router={router}
-            />
+          <NavBarConsolas
+            nombre="Mega CD"
+            ruta="/megacd"
+            icono="/icons/iconoMegaCd.png"
+            sonidoHover="Mega CD Hover"
+            sonidoClick="megacd"
+            handleSoundPlay={handleSoundPlay}
+            sounds={sounds}
+            reproducirSonido={reproducirSonido}
+            router={router}
+          />
 
-            <NavBarConsolas
-              nombre="Saturn"
-              ruta="/saturn"
-              icono="/icons/iconoSaturn.png"
-              sonidoHover="Saturn Hover"
-              sonidoClick="saturn"
-              handleSoundPlay={handleSoundPlay}
-              sounds={sounds}
-              reproducirSonido={reproducirSonido}
-              router={router}
-            />
+          <NavBarConsolas
+            nombre="Saturn"
+            ruta="/saturn"
+            icono="/icons/iconoSaturn.png"
+            sonidoHover="Saturn Hover"
+            sonidoClick="saturn"
+            handleSoundPlay={handleSoundPlay}
+            sounds={sounds}
+            reproducirSonido={reproducirSonido}
+            router={router}
+          />
 
-            <NavBarConsolas
-              nombre="Dreamcast"
-              ruta="/dreamcast"
-              icono="/icons/iconoDreamcast.png"
-              sonidoHover="Dreamcast Hover"
-              sonidoClick="dreamcast"
-              handleSoundPlay={handleSoundPlay}
-              sounds={sounds}
-              reproducirSonido={reproducirSonido}
-              router={router}
-            />
+          <NavBarConsolas
+            nombre="Dreamcast"
+            ruta="/dreamcast"
+            icono="/icons/iconoDreamcast.png"
+            sonidoHover="Dreamcast Hover"
+            sonidoClick="dreamcast"
+            handleSoundPlay={handleSoundPlay}
+            sounds={sounds}
+            reproducirSonido={reproducirSonido}
+            router={router}
+          />
 
-          </ul>
-        </div>
-      </nav>
+        </ul>
+      </nav >
     </>
   );
 };
