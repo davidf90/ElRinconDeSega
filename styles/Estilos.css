@@ -1479,6 +1479,55 @@
 @media (max-width: 768px) {
   .videos-section {
     grid-template-columns: 1fr;
+    width: 98vw;
+    gap: 1rem;
+    padding: 0 2vw;
+  }
+  .video-card {
+    max-width: 100vw;
+    padding: 10px;
+  }
+  .video-titulo {
+    font-size: 1.1rem;
+  }
+  .video-container {
+    border-radius: 6px;
+  }
+  .buscador-formulario {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 10px;
+  }
+  .buscador-input {
+    width: 95%;
+    min-width: unset;
+    max-width: 95%;
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+  .buscador-boton {
+    width: 95%;
+    font-size: 1rem;
+    padding: 10px 10px;
+  }
+  .buscador-resultados {
+    grid-template-columns: 1fr;
+    width: 98vw;
+    gap: 1rem;
+    padding: 0 2vw;
+  }
+  .resultado-card {
+    max-width: 100vw;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  .resultado-titulo {
+    font-size: 1.1rem;
+  }
+  .resultado-imagen {
+    width: 100%;
+    height: auto;
+    max-width: 100vw;
   }
 }
 
@@ -1643,6 +1692,10 @@
   overflow: visible;
   text-overflow: unset;
 }
+
+
+
+
 
 /* Responsive para móviles */
 @media (max-width: 992px) {
@@ -1870,192 +1923,56 @@
 /*          RESPONSIVE - MÓVILES (480px)         */
 /* ============================================= */
 @media (max-width: 480px) {
-
-  /* Página principal */
-  .titulo {
-    font-size: 32px;
-    margin-top: 20px;
+  .videos-section {
+    grid-template-columns: 1fr;
+    width: 100vw;
+    gap: 0.5rem;
+    padding: 0 1vw;
   }
-
-  .textoConsolas {
-    font-size: 14px;
-    margin-top: 15px;
-  }
-
-  .navbar-nav {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    padding: 6px 8px !important;
-    gap: 3px !important;
-    border-radius: 8px;
-    overflow-x: auto;
-    max-width: 98vw;
-  }
-
-  .nav-icon {
-    width: 48px !important;
-    height: 48px !important;
-  }
-
-  .consola-icono {
-    margin: 3px !important;
-  }
-
-  .consola-icono::after {
-    font-size: 10px;
-    bottom: -35px;
-    padding: 4px 8px;
-  }
-
-  /* Títulos de cada consola */
-  .titulo-mastersystem,
-  .titulo-megadrive,
-  .titulo-gamegear,
-  .titulo-megacd,
-  .titulo-saturn,
-  .titulo-dreamcast {
-    font-size: 28px;
-    margin-top: 15px;
-    word-break: break-word;
-  }
-
-  /* Buscador */
-  .buscador-input {
-    width: 95%;
-    max-width: 95%;
-    font-size: 0.9rem;
-    padding: 8px 12px;
-  }
-
-  .buscador-boton {
-    width: 95%;
-    font-size: 1rem;
-    padding: 10px 20px;
-  }
-
-  .buscador-titulo {
-    font-size: 1.2rem;
-  }
-
-  /* Resultados */
-  .resultado-card {
-    padding: 15px;
-  }
-
-  .resultado-titulo {
-    font-size: 1.1rem;
-  }
-
-  .resultado-imagen {
-    max-width: 100%;
-  }
-
-  .resultado-info {
-    font-size: 0.85rem;
-  }
-
-  /* Videos */
-  .video-titulo {
-    font-size: 1.1rem;
-  }
-
-  .icono-video {
-    width: 24px;
-    height: 24px;
-  }
-
-  /* Zona OST */
-  .zona-ost {
-    padding: 12px;
-    margin: 15px 10px;
-    width: calc(100% - 20px);
-  }
-
-  .zona-ost-titulo {
-    font-size: 1rem;
-  }
-
-  .zona-ost-recuadro {
-    padding: 12px;
-  }
-
-  .ost-wrapper {
-    max-height: 220px;
-  }
-
-  .lista-ost-scroll {
-    max-height: 200px;
-  }
-
-  .cancion-item {
-    font-size: 0.55rem;
+  .video-card {
+    max-width: 100vw;
     padding: 6px;
   }
-
-  .texto-reproduciendo {
-    font-size: 10px;
+  .video-titulo {
+    font-size: 1rem;
   }
-
-  .controles-sega {
-    flex-wrap: wrap;
-    gap: 8px;
+  .video-container {
+    border-radius: 4px;
   }
-
-  .btn-play {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
+  .buscador-formulario {
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 5px;
   }
-
-  .barra-volumen {
-    width: 70px;
+  .buscador-input {
+    width: 99%;
+    min-width: unset;
+    max-width: 99%;
+    font-size: 0.9rem;
+    padding: 6px 6px;
   }
-
-  /* Botón volver */
-  .boton-volver {
-    top: 8px;
-    left: 8px;
+  .buscador-boton {
+    width: 99%;
+    font-size: 0.95rem;
+    padding: 8px 6px;
   }
-
-  .boton-volver-gif {
-    width: 45px;
+  .buscador-resultados {
+    grid-template-columns: 1fr;
+    width: 99vw;
+    gap: 0.5rem;
+    padding: 0 1vw;
   }
-
-  .boton-volver-texto {
-    font-size: 10px;
+  .resultado-card {
+    max-width: 100vw;
+    margin-bottom: 10px;
+    padding: 6px;
   }
-
-  /* Textos de juegos encontrados */
-  .texto-juegos-encontrados-mastersystem,
-  .texto-juegos-encontrados-megadrive,
-  .texto-juegos-encontrados-gamegear,
-  .texto-juegos-encontrados-megacd,
-  .texto-juegos-encontrados-saturn,
-  .texto-juegos-encontrados-dreamcast {
-    font-size: 18px;
+  .resultado-titulo {
+    font-size: 1rem;
   }
-
-  .texto-numero-juegos-encontrados-mastersystem,
-  .texto-numero-juegos-encontrados-megadrive,
-  .texto-numero-juegos-encontrados-gamegear,
-  .texto-numero-juegos-encontrados-megacd,
-  .texto-numero-juegos-encontrados-saturn,
-  .texto-numero-juegos-encontrados-dreamcast {
-    font-size: 20px;
-  }
-
-  .texto-buscando,
-  .texto-error {
-    font-size: 16px;
-  }
-
-  .posible-resultado {
-    font-size: 12px;
-  }
-
-  /* Efecto Sonic en Game Gear */
-  .sonic-gif {
-    height: 60px;
+  .resultado-imagen {
+    width: 100%;
+    height: auto;
+    max-width: 100vw;
   }
 }
