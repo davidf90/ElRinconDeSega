@@ -1408,7 +1408,7 @@
 /* Sección de videos */
 .videos-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   justify-items: center;
   align-items: start;
@@ -1475,10 +1475,21 @@
   border: 0;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive videos */
+@media (max-width: 992px) {
   .videos-section {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    width: 95% !important;
+    gap: 1.5rem !important;
+  }
+
+  .video-card {
+    max-width: 100% !important;
+    padding: 15px !important;
+  }
+
+  .video-titulo {
+    font-size: 1.3rem !important;
   }
 }
 
@@ -1790,14 +1801,58 @@
   .videos-section {
     grid-template-columns: 1fr !important;
     width: 95% !important;
+    gap: 1.5rem !important;
+    margin: 20px auto !important;
   }
 
   .video-card {
     max-width: 100% !important;
+    padding: 15px !important;
   }
 
   .video-titulo {
     font-size: 1.3rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  .video-container {
+    width: 100% !important;
+  }
+
+  .icono-video {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* Wrappers de consolas */
+  .buscador-mastersystem-wrapper,
+  .buscador-megadrive-wrapper,
+  .buscador-gamegear-wrapper,
+  .buscador-megacd-wrapper,
+  .buscador-saturn-wrapper,
+  .buscador-dreamcast-wrapper {
+    width: 100% !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Contenedor Bootstrap en páginas de consola */
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  /* Fondos de consolas - asegurar scroll horizontal deshabilitado */
+  .fondo-mastersystem,
+  .fondo-megadrive,
+  .fondo-gamegear,
+  .fondo-megacd,
+  .fondo-saturn,
+  .fondo-dreamcast {
+    width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   /* Zona OST */
@@ -1960,13 +2015,61 @@
   }
 
   /* Videos */
+  .videos-section {
+    grid-template-columns: 1fr !important;
+    width: 98% !important;
+    gap: 1rem !important;
+    margin: 15px auto !important;
+  }
+
+  .video-card {
+    max-width: 100% !important;
+    padding: 12px !important;
+  }
+
   .video-titulo {
     font-size: 1.1rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  .video-container {
+    width: 100% !important;
   }
 
   .icono-video {
     width: 24px !important;
     height: 24px !important;
+  }
+
+  /* Wrappers de consolas */
+  .buscador-mastersystem-wrapper,
+  .buscador-megadrive-wrapper,
+  .buscador-gamegear-wrapper,
+  .buscador-megacd-wrapper,
+  .buscador-saturn-wrapper,
+  .buscador-dreamcast-wrapper {
+    width: 100% !important;
+    padding: 0 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Contenedor Bootstrap en páginas de consola */
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  /* Fondos de consolas - asegurar scroll horizontal deshabilitado */
+  .fondo-mastersystem,
+  .fondo-megadrive,
+  .fondo-gamegear,
+  .fondo-megacd,
+  .fondo-saturn,
+  .fondo-dreamcast {
+    width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   /* Zona OST */
